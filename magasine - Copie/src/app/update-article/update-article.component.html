@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+
+<div class="container"> 
+    <div> 
+    <h2>Modifier un article</h2> 
+    </div> 
+    <form > 
+    <div class="col-sm-2 col-md-2 col-lg-2"> 
+    <label >Code</label> 
+    <input readonly type="text" [(ngModel)]="articleCourant.codea" 
+        name="codea" class="form-control"> 
+        </div> 
+        <div class="col-sm-4 col-md-4 col-lg-4" > 
+        <label >Libellé</label> 
+        <input type="text" [(ngModel)]= "articleCourant.libelle" 
+        name="libelle" class="form-control"> 
+        </div> 
+        <div class="col-sm-2 col-md-2 col-lg-2"> 
+        <label >Prix</label> 
+        <input type="number" [(ngModel)]= "articleCourant.prix" 
+        name="prix" class="form-control"> 
+        </div> 
+        <div class="col-sm-2 col-md-2 col-lg-2"> 
+        <label >Quantité</label> 
+        <input type="number" [(ngModel)]= "articleCourant.qte" name="qte" 
+        class="form-control"> 
+        </div> 
+        <div class="col-sm-4 col-md-4 col-lg-4"> 
+        <label >Date d'ajout</label> 
+        <input type="date" [ngModel]="articleCourant.dateAjout | date: 
+        'yyyy-MM-dd'" (ngModelChange)=" articleCourant.dateAjout= $event" 
+        name="dateAjout" class="form-control"> 
+        </div> 
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Categorie</label>
+            <select class="form-control form-control-lg" id="codec" name="codec"
+            [(ngModel)]="codecModifie">
+            <option *ngFor="let category of categories" [value]=" category.codec">
+            {{ category.nomCat}}</option>
+            </select>
+            </div>
+        <div class="mt-2"> 
+        <button type="submit" (click)="modifArticle()" class="btn 
+        btn-success">Modifer</button> 
+        </div> 
+        </form> 
+        </div> 
+        <!-- <app-articles></app-articles> -->
+

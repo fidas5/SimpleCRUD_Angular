@@ -1,0 +1,53 @@
+
+<!-- <app-articles></app-articles> -->
+
+<div class="container">
+    <div>
+    <h2>Ajouter un article</h2>
+    </div>
+
+    <form >
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >Code article</label>
+        <input type="number" [(ngModel)]="newArticle.codea" name="code" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+        <label >Libellé</label>
+        <input type="text" [(ngModel)]="newArticle.libelle" name="libelle" class="form-control">
+    
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Prix</label>
+    <input type="number" [(ngModel)]="newArticle.prix" name="prix" class="form-control">
+    
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Quantité</label>
+    <input type="number" [(ngModel)]="newArticle.qte"
+    
+    name="qte" class="form-control">
+    
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Date création</label>
+    <input type="date" [(ngModel)]="newArticle.dateAjout" name="dateAjout" class="form-control">
+    </div>
+
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Categorie</label>
+        <select class="form-control form-control-lg" id="codec" name="codec"
+        [(ngModel)]="newCodec">
+        <option *ngFor="let cat of categories" [value]="cat.codec">
+        {{cat.nomCat}}</option>
+        </select>
+        </div>
+
+    <div class="mt-2">
+    <button type="submit" (click)="addArticle()" class="btn btn-success">Ajouter</button>
+    </div>
+
+    </form>
+    </div>

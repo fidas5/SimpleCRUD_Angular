@@ -1,0 +1,43 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+    <h1>Liste des articles</h1>
+    <table width="100%">
+    <thead>
+    <tr>
+    <th>Code</th>
+    <th>Libellé</th>
+    <th>Categorie</th>
+    <th>Prix</th>
+    <th>Quantité</th>
+    <th>Date insertion</th>
+    <th>Approvisionner</th>
+    <th *ngIf="authServ.testerAdmin()">Action</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let article of tab_art">
+    <tr >
+
+    <td>{{article.codea}}</td>
+    <td>{{article.libelle | uppercase}}</td>
+    <td>{{article.categ.nomCat }}</td>
+    <td>{{article.prix | number : '1.3'}}</td>
+    <td>{{article.qte}}</td>
+    <td>{{article.dateAjout | date:'dd/MM/yyyy'}}</td>
+    <td *ngIf="article.qte ===0" [ngStyle]="zeroStyle" >Oui</td>
+    <td *ngIf="article.qte !== 0">Non</td>
+    <td *ngIf="authServ.testerAdmin()">
+        <a class="btn btn-warning" [routerLink]="['/updateArticle',article.codea]" style="margin-right: 10px;"> 
+            <img src="../../assets/img/edit.png" height="32" width="32"></a>
+
+        <a class="btn btn-danger" (click)="suppArticle(article)">
+        <img src="../../assets/img/delete.png" height="32" width="32"></a>
+    </td>
+    </tr>
+
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

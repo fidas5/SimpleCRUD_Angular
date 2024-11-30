@@ -1,0 +1,71 @@
+<app-menu></app-menu>
+
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+    <h1>Liste des articles</h1>
+    <table width="100%">
+    <thead>
+    <tr>
+    <th>Code</th>
+    <th>Libellé</th>
+    <th>Categorie</th>
+    <th>Prix</th>
+    <th>Quantité</th>
+    <th>Date</th>
+
+    </tr>
+    </thead>
+    <tbody *ngFor="let article of articles">
+    <tr >
+
+    <td>{{article.codea}}</td>
+    <td>{{article.libelle | uppercase}}</td>
+    <td>{{article.categ.nomCat }}</td>
+    <td>{{article.prix | number : '1.3'}}</td>
+    <td>{{article.qte}}</td>
+    <td>{{article.dateAjout | date}}</td>
+
+    </tr>
+
+    </tbody>
+    </table>
+
+    
+    </div>
+    
+    </div>
+    <div [ngSwitch]="critere">
+    <form name="f1">
+        Choisir un critère de recherche :
+        <input type="radio" name="critere" [(ngModel)]="critere"
+        value="categorie"> par Catégorie
+        <input type="radio" name="critere" [(ngModel)]="critere" value="libelle">
+        par Libellé
+       
+        </form><br>
+
+        <form name="f2" class="form-inline">
+        <div  *ngSwitchCase="'libelle'" class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Libellé à chercher : </label>
+        
+        <input type="text" class="form-control" name="libelle" class="form-
+        control" #libArticle (keyup)="chercherParLib(libArticle.value)">
+        
+        </div>
+
+       
+
+        <div class="form-group" *ngSwitchCase="'categorie'">
+        Catégorie 
+        <select class="form-control form-control-lg" id="codec"name="codec" [(ngModel)]="categRech" (change)="chercherParCateg()">
+        <option *ngFor="let category of categories" value="{{category.codec}}">{{category.nomCat}}</option>
+        </select>
+        
+        <button type="submit" (click)="reset()" class="btn btn-dark mb-2 ml-2">Reinitialiser</button>
+        
+        </div>
+
+        </form>
+    </div>
+    </div>
